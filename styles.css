@@ -1,3 +1,18 @@
 h1{
   color: red;
 }
+body{
+  background-color: black;
+}
+.navigation{
+}
+
+.navSection{
+  display: inline-block;
+  position: absolute;
+  width: 10%;
+  height: auto;
+}
+.content{
+  margin-left: 10%;
+}
