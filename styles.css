@@ -1,18 +1,82 @@
-h1{
-  color: red;
-}
-body{
-  background-color: black;
-}
-.navigation{
+body {
+  background-color: #f4f6ff;
 }
 
-.navSection{
-  display: inline-block;
+/*---------------NavBar---------------*/
+.navbar {
+  background-color: #fbd46d;
   position: absolute;
-  width: 10%;
-  height: auto;
+  width: 100%;
+  top: 0;
+  z-index: 2;
 }
-.content{
-  margin-left: 10%;
+
+/*---------------Content Section---------------*/
+#content{
+  padding-top: 3rem;
+}
+/*---------------Navigation---------------*/
+#sideBar {
+  max-width: 14rem !important;
+  width: 15%;
+  min-height: 100vh;
+  background-color: #4f8a8b;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding-top: 4rem;
+}
+
+.nav-link {
+  color: white;
+  margin-left: 2rem;
+}
+#sideBar .active{
+  margin-left: 1rem;
+}
+
+.navigation {
+  margin: 5px 10px;
+}
+
+/*---------------content---------------*/
+/* Blog Content */
+#blog {
+  margin-left: 15%;
+  padding: 3% 5%;
+}
+
+.date {
+  color: gray;
+}
+
+/* Add Blog */
+.editArea {
+  width: 70%;
+  margin: 5px;
+  background-color: #fbd46d55;
+  border: 1px solid #e7dfd5;
+  border-radius: 5px;
+}
+
+.inputContent {
+  height: 200px;
+  display: block;
+}
+
+/*---------------footer---------------*/
+#footer {
+  background-color: #07031a;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  bottom: 0;
+  padding: 10px;
+}
+
+.contactMe {
+  color: white;
 }

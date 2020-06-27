@@ -1,0 +1,1 @@
+var bd = firebase.firestore();
