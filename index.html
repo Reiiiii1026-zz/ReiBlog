@@ -20,13 +20,13 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Latest Blogs</a>
+            <a class="nav-link" href="#">Add New Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Edit Blogs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Add New Blog</a>
+            <a class="nav-link" href="#">Contact Me</a>
           </li>
         </ul>
       </div>
@@ -39,57 +39,31 @@
   <!-- Nav on the left -->
   <div id="sideBar">
     <nav class="nav flex-column navigation">
-      <a class="nav-link active" href="#">Blog List</a>
-      <a class="nav-link" href="#">Link</a>
-      <a class="nav-link" href="#">Link</a>
-      <a class="nav-link" href="#">Link</a>
     </nav>
   </div>
   <div id="blog">
     <div class="blogContent">
-      <h2 class="blogTitle">bolg title</h2>
-      <p class="date">2020.06.26</p>
-      <p class="content">Some content</p>
+      <h2 class="blogTitle"></h2>
+      <p class="date"></p>
+      <p class="content"></p>
     </div>
-    <div id="addBlog">
+    <div id="addBlog" class="hidden">
       <div class="wrap">
-        <input class="inputTitle editArea" type="text" value="Title..." >
-        <input class="date editArea" type="datetime-local">
+        <input class="inputTitle editArea" type="text" value="Title...">
+        <input class="date editArea" type="date">
         <textarea class="inputContent editArea" rows="8" cols="80">Write something....</textarea>
-        <input class="editArea" type="submit">
+        <input class="editArea submit" type="submit">
       </div>
     </div>
   </div>
-
-  <section id="footer" >
-    <div class="contactMe">
-    <p>CONTACT ME</p>
-    <a href="#">fb</a>
-    </div>
-  </section>
 
 
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+  <script src="index.js" charset="utf-8"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyBRzFwrPSCipDJWv4_ee514hGmtrSbWvqA",
-      authDomain: "rei-sblog.firebaseapp.com",
-      databaseURL: "https://rei-sblog.firebaseio.com",
-      projectId: "rei-sblog",
-      storageBucket: "rei-sblog.appspot.com",
-      messagingSenderId: "879316428372",
-      appId: "1:879316428372:web:88be6fa8d526c03f596fc1"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
 </body>
 
 </html>
