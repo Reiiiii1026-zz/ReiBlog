@@ -15,15 +15,35 @@ var db = firebase.firestore();
 var ref = db.collection('blog');
 var sideBar = document.querySelector('#sideBar nav');
 var status = "read"; //Show the status of blog now.
+var cardTemp = document.querySelector('#cardTemp');
+var homeCard = document.querySelector('#home .row');
 /*----------Load list the paragraph at sidebar.----------*/
 ref.orderBy("date", "desc").get().then(querySnapshot => {
   querySnapshot.forEach(doc => {
+    // Blog list on sidebar.
+    var data = doc.data();
+    var href = '?id=' + encodeURIComponent(doc.id);
+
     var insert = document.createElement('a');
-    insert.href = '?id=' + encodeURIComponent(doc.id);
+    insert.href = href;
     insert.classList.add('nav-link');
-    var title = document.createTextNode(doc.data().title);
-    insert.appendChild(title);
+    insert.innerText = data.title;
     sideBar.appendChild(insert);
+
+    // Card on home page.
+    var cardCreated = document.createElement('div');
+    cardCreated.innerHTML = cardTemp.innerHTML;
+    var cardTitle = cardCreated.children[0].children[0];
+    var cardContent = cardCreated.children[0].children[1];
+    var cardLink = cardCreated.children[0].children[2];
+    cardCreated.classList.add('card');
+    cardCreated.classList.add('col-sm-4');
+    cardTitle.innerText = data.title;
+    cardContent.innerText = data.content;
+    cardLink.href = href;
+    homeCard.appendChild(cardCreated);
+
+
   });
 });
 
@@ -43,6 +63,7 @@ addNewBlog.onclick = function() {
   blog.classList.add('hidden');
   addBlogSec.classList.remove('hidden');
   sourceCodeSec.classList.add('hidden');
+  homeCard.classList.add('hidden');
   status = "add"; //Change the status to blog "add".
 
 };
@@ -52,6 +73,7 @@ editBlog.onclick = function() {
   blog.classList.add('hidden');
   addBlogSec.classList.remove('hidden');
   sourceCodeSec.classList.add('hidden');
+  homeCard.classList.add('hidden');
   status = "edit"; //Change the status to blog "edit".
   console.log("Edit");
   if (paragraphID == null) {
@@ -76,7 +98,6 @@ sourceCode.onclick = function() {
 };
 
 /*----------Show blog with URL ID----------*/
-var latestPar = document.querySelector('#sideBar nav a');
 var urlParams = new URLSearchParams(window.location.search);
 var paragraphID = urlParams.get('id');
 var blogTitle = document.querySelector('#blog .blogTitle');
@@ -85,21 +106,20 @@ var blogContent = document.querySelector('#blog .content');
 
 
 function showBlog(data) {
+  homeCard.classList.add('hidden');
+  blogContent.classList.remove('hidden');
   blogTitle.appendChild(document.createTextNode(data.title));
   blogDate.appendChild(document.createTextNode(data.date));
   blogContent.appendChild(document.createTextNode(data.content));
 }
 
 if (paragraphID == null) {
-  ref.orderBy("date", "desc").limit(1).get().then(querySnapshot => {
-    querySnapshot.forEach(doc => {
-      var data = doc.data();
-      showBlog(data);
-    });
-  });
+  blogContent.classList.add('hidden');
+  homeCard.classList.remove('hidden');
 } else {
   ref.doc(paragraphID).get().then(doc => {
     var data = doc.data();
+    homeCard.classList.add('hidden');
     showBlog(data);
   });
 }
@@ -113,30 +133,32 @@ var deleteBtn = document.querySelector('#addBlog button');
 
 /*----------Add new blog or edit blog (submit button)----------*/
 submit.onclick = function() {
-  if(status === "add"){
-  ref.add({
-    title: inputTitle.value,
-    date: inputDate.value,
-    content: inpuContent.value
-  }).then(docRef => {
-    var id = docRef.id;
-    window.location.href = "?id=" + encodeURIComponent(id);
-  })
-}else if (status === "edit"){
-  ref.doc(paragraphID).update({
-    title: inputTitle.value,
-    date: inputDate.value,
-    content: inpuContent.value
-  }).then(docRef => {
-    window.location.href = "?id=" + paragraphID;
-  })
-}};
+  if (status === "add") {
+    ref.add({
+      title: inputTitle.value,
+      date: inputDate.value,
+      content: inpuContent.value
+    }).then(docRef => {
+      var id = docRef.id;
+      window.location.href = "?id=" + encodeURIComponent(id);
+    })
+  } else if (status === "edit") {
+    ref.doc(paragraphID).update({
+      title: inputTitle.value,
+      date: inputDate.value,
+      content: inpuContent.value
+    }).then(docRef => {
+      window.location.href = "?id=" + paragraphID;
+    })
+  }
+};
 
 deleteBtn.onclick = function() {
-  if(status === "add"){
+  if (status === "add") {
     window.location.href = "?id=" + paragraphID;
-}else if (status === "edit"){
-  ref.doc(paragraphID).delete().then(docRef => {
-    window.location.href = "?id=" + paragraphID;
-  })
-}};
+  } else if (status === "edit") {
+    ref.doc(paragraphID).delete().then(docRef => {
+      window.location.href = "?id=" + paragraphID;
+    })
+  }
+};
