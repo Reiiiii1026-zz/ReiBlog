@@ -12,31 +12,28 @@ body {
 }
 
 /*---------------Content Section---------------*/
-#content{
-  padding-top: 3rem;
+#content {
+  padding-top: 56px;
 }
+
 /*---------------Navigation---------------*/
 #sideBar {
-  max-width: 14rem !important;
-  width: 15%;
-  min-height: 90%;
-  background-color: #4f8a8b;
+  width: 14rem;
   position: absolute;
-  top: 0;
+  top: 56px;
   bottom: 0;
   left: 0;
   z-index: 1;
-  padding-top: 4rem;
+  background-color: #4f8a8b;
 }
-#blog{
 
-  padding-bottom: 50px;
-}
+#sideBar .nav {}
+
 .nav-link {
   color: white;
-  margin-left: 2rem;
 }
-#sideBar .active{
+
+#sideBar .active {
   margin-left: 1rem;
 }
 
@@ -45,31 +42,81 @@ body {
 }
 
 /*---------------content---------------*/
-/* Blog Content */
-#blog {
-  margin-left: 15%;
-  padding: 3% 5%;
+.contentArea {
+  position: absolute;
+  left: 14rem;
+  top: 56px;
+  padding: 20px 20px;
 }
 
-.date {
+/* Home Card*/
+.card {
+  margin: 10px;
+}
+
+.row{
+  width:80%;
+  margin:auto;
+}
+
+/* Blog Content */
+#blog {
+  margin: auto;
+  padding: 50px;
+  width: 70%;
+}
+
+#blog .date {
   color: gray;
 }
 
-/* Add Blog */
-.editArea {
+/* Add Blog & Edit Blog */
+#addBlog {
   width: 70%;
+  padding: 50px;
+  margin: auto;
+}
+
+.editArea {
   margin: 5px;
+  width: 100%;
   background-color: #fbd46d55;
   border: 1px solid #e7dfd5;
   border-radius: 5px;
 }
 
+.inputTitle {
+  display: block;
+  width: 100%;
+}
+
 .inputContent {
   height: 200px;
   display: block;
+  width: 100%;
+}
+
+.editIcon {
+  margin: 5px;
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+/* Source Code*/
+#sourceCode {
+  text-align: center;
+}
+
+.fa {
+  color: #3f3f44;
+  margin-right:10px;
 }
 
 /*---------------invisible---------------*/
-.hidden{
+.hidden {
   display: none;
+}
+
+@@media  {
+
 }
