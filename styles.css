@@ -9,34 +9,42 @@ body {
   width: 100%;
   top: 0;
   z-index: 2;
+  ¥
 }
 
 /*---------------Content Section---------------*/
-#content{
+#content {
   padding-top: 3rem;
+  margin-left: 15%;
 }
+
 /*---------------Navigation---------------*/
 #sideBar {
   max-width: 14rem !important;
   width: 15%;
-  min-height: 90%;
-  background-color: #4f8a8b;
   position: absolute;
-  top: 0;
+  top: 56px;
   bottom: 0;
   left: 0;
   z-index: 1;
-  padding-top: 4rem;
 }
-#blog{
 
+#sideBar .nav {
+  background-color: #4f8a8b;
+  margin: 0;
+
+}
+
+#blog {
   padding-bottom: 50px;
 }
+
 .nav-link {
   color: white;
   margin-left: 2rem;
 }
-#sideBar .active{
+
+#sideBar .active {
   margin-left: 1rem;
 }
 
@@ -47,7 +55,6 @@ body {
 /*---------------content---------------*/
 /* Blog Content */
 #blog {
-  margin-left: 15%;
   padding: 3% 5%;
 }
 
@@ -69,7 +76,16 @@ body {
   display: block;
 }
 
+/* Source Code*/
+#sourceCode {
+  text-align: center;
+}
+
+.fa {
+  color: #3f3f44;
+}
+
 /*---------------invisible---------------*/
-.hidden{
+.hidden {
   display: none;
 }
