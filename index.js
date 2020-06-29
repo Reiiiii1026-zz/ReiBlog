@@ -36,7 +36,7 @@ ref.orderBy("date", "desc").get().then(querySnapshot => {
     var cardTitle = cardCreated.children[0].children[0];
     var cardContent = cardCreated.children[0].children[1];
     var cardLink = cardCreated.children[0].children[2];
-    cardCreated.classList.add('card','col-md-4','col-lg-3');
+    cardCreated.classList.add('card','col-lg-3', 'col-md-12');
     cardTitle.innerText = data.title;
     cardContent.innerText = data.content;
     cardLink.href = href;
