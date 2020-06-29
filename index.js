@@ -36,8 +36,7 @@ ref.orderBy("date", "desc").get().then(querySnapshot => {
     var cardTitle = cardCreated.children[0].children[0];
     var cardContent = cardCreated.children[0].children[1];
     var cardLink = cardCreated.children[0].children[2];
-    cardCreated.classList.add('card');
-    cardCreated.classList.add('col-sm-4');
+    cardCreated.classList.add('card','col-md-4','col-lg-3');
     cardTitle.innerText = data.title;
     cardContent.innerText = data.content;
     cardLink.href = href;
@@ -51,7 +50,7 @@ ref.orderBy("date", "desc").get().then(querySnapshot => {
 var addNewBlog = document.querySelectorAll('#header .nav-link')[0];
 var editBlog = document.querySelectorAll('#header .nav-link')[1];
 var sourceCode = document.querySelectorAll('#header .nav-link')[2];
-var blog = document.querySelector('.blogContent');
+var blog = document.querySelector('#blog');
 var addBlogSec = document.querySelector('#addBlog');
 var sourceCodeSec = document.querySelector('#sourceCode');
 
@@ -75,7 +74,6 @@ editBlog.onclick = function() {
   sourceCodeSec.classList.add('hidden');
   homeCard.classList.add('hidden');
   status = "edit"; //Change the status to blog "edit".
-  console.log("Edit");
   if (paragraphID == null) {
     alert("Please choose a blog from the list on the left or add a new blog.");
     status = "add";
@@ -100,6 +98,7 @@ sourceCode.onclick = function() {
 /*----------Show blog with URL ID----------*/
 var urlParams = new URLSearchParams(window.location.search);
 var paragraphID = urlParams.get('id');
+var blogArea = document.querySelector('#blog');
 var blogTitle = document.querySelector('#blog .blogTitle');
 var blogDate = document.querySelector('#blog .date');
 var blogContent = document.querySelector('#blog .content');
@@ -107,7 +106,7 @@ var blogContent = document.querySelector('#blog .content');
 
 function showBlog(data) {
   homeCard.classList.add('hidden');
-  blogContent.classList.remove('hidden');
+  blogArea.classList.remove('hidden');
   blogTitle.appendChild(document.createTextNode(data.title));
   blogDate.appendChild(document.createTextNode(data.date));
   blogContent.appendChild(document.createTextNode(data.content));
@@ -129,7 +128,7 @@ var inputTitle = document.querySelector('#addBlog .inputTitle');
 var inputDate = document.querySelector('#addBlog .date');
 var inpuContent = document.querySelector('#addBlog .inputContent');
 var submit = document.querySelector('#addBlog .submit');
-var deleteBtn = document.querySelector('#addBlog button');
+var deleteBtn = document.querySelector('#addBlog .delete');
 
 /*----------Add new blog or edit blog (submit button)----------*/
 submit.onclick = function() {
@@ -152,13 +151,12 @@ submit.onclick = function() {
     })
   }
 };
-
 deleteBtn.onclick = function() {
   if (status === "add") {
     window.location.href = "?id=" + paragraphID;
   } else if (status === "edit") {
     ref.doc(paragraphID).delete().then(docRef => {
-      window.location.href = "?id=" + paragraphID;
+      window.location.href = "?";
     })
   }
 };
